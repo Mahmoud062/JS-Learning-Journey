@@ -1,36 +1,68 @@
-const input = document.getElementById('taskInput');
-const addBtn = document.getElementById('addBtn');
-const taskList = document.getElementById('taskList');
+const DashboardApp = (() => {
+  const selectors = {
+    sidebarToggleButton: '.sidebar-toggle',
+    dashboardSidebar: '.dashboard-sidebar',
+    navigationLinks: '.nav-link',
+    navigationArrow: '.nav-arrow',
+    collapsedClass: 'collapsed',
+    activeClass: 'active'
+  };
 
-function addTask() {
-    const taskText = input.value;
+  const DOM = {
+    sidebarToggle: null,
+    sidebar: null,
+    navLinks: null
+  };
 
-    if (taskText === '') {
-        alert("Please enter a task!");
-        return;
-    }
+  const cacheDOMElements = () => {
+    DOM.sidebarToggle = document.querySelector(selectors.sidebarToggleButton);
+    DOM.sidebar = document.querySelector(selectors.dashboardSidebar);
+    DOM.navLinks = document.querySelectorAll(selectors.navigationLinks);
+  };
 
-    const li = document.createElement('li');
-    li.textContent = taskText;
+  const toggleSidebar = () => {
+    DOM.sidebar?.classList.toggle(selectors.collapsedClass);
+  };
 
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'X';
-    deleteBtn.classList.add('delete-btn');
+  const deactivateAllNavigationLinks = (currentLink) => {
+    DOM.navLinks.forEach(link => {
+      if (link !== currentLink) {
+        link.classList.remove(selectors.activeClass);
+      }
+    });
+  };
+
+  const rotateNavigationArrow = (arrow, isActive) => {
+    arrow.style.transform = isActive ? 'rotate(90deg)' : 'rotate(0deg)';
+  };
+
+  const handleNavigationLinkClick = (event) => {
+    const currentLink = event.currentTarget;
+    const navigationArrow = currentLink.querySelector(selectors.navigationArrow);
     
-    deleteBtn.onclick = function() {
-        taskList.removeChild(li);
-    };
+    if (!navigationArrow) return;
 
-    li.appendChild(deleteBtn);
-    taskList.appendChild(li);
+    event.preventDefault();
+    deactivateAllNavigationLinks(currentLink);
+    currentLink.classList.toggle(selectors.activeClass);
+    
+    const isActive = currentLink.classList.contains(selectors.activeClass);
+    rotateNavigationArrow(navigationArrow, isActive);
+  };
 
-    input.value = '';
-}
+  const attachEventListeners = () => {
+    DOM.sidebarToggle?.addEventListener('click', toggleSidebar);
+    DOM.navLinks.forEach(link => {
+      link.addEventListener('click', handleNavigationLinkClick);
+    });
+  };
 
-addBtn.addEventListener('click', addTask);
+  const initialize = () => {
+    cacheDOMElements();
+    attachEventListeners();
+  };
 
-input.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        addTask();
-    }
-});
+  return { initialize };
+})();
+
+document.addEventListener('DOMContentLoaded', DashboardApp.initialize);
