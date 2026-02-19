@@ -846,7 +846,11 @@
           </div>
 
           <section class="stats-grid">
-            <article class="stat-card" style="--progress: 72%">
+            <article
+              class="stat-card"
+              style="--progress: 72%"
+              data-live-progress="calories"
+            >
               <div class="stat-card-header">
                 <span class="stat-label">Calories Burned</span>
                 <span class="card-badge new">New</span>
@@ -860,14 +864,18 @@
                   </svg>
                 </span>
               </div>
-              <div class="stat-value">2,460</div>
+              <div class="stat-value" data-live="calories">2,460</div>
               <div class="stat-meta">Goal 3,200 kcal</div>
               <div class="stat-progress">
                 <div class="stat-progress-bar"></div>
               </div>
             </article>
 
-            <article class="stat-card" style="--progress: 84%">
+            <article
+              class="stat-card"
+              style="--progress: 84%"
+              data-live-progress="steps"
+            >
               <div class="stat-card-header">
                 <span class="stat-label">Total Steps</span>
                 <span class="card-badge pro">Pro</span>
@@ -889,14 +897,18 @@
                   </svg>
                 </span>
               </div>
-              <div class="stat-value">18,420</div>
+              <div class="stat-value" data-live="steps">18,420</div>
               <div class="stat-meta">+1,250 vs last week</div>
               <div class="stat-progress">
                 <div class="stat-progress-bar"></div>
               </div>
             </article>
 
-            <article class="stat-card" style="--progress: 58%">
+            <article
+              class="stat-card"
+              style="--progress: 58%"
+              data-live-progress="water"
+            >
               <div class="stat-card-header">
                 <span class="stat-label">Water Intake</span>
                 <span class="card-badge alert">Alert</span>
@@ -910,14 +922,18 @@
                   </svg>
                 </span>
               </div>
-              <div class="stat-value">4.1 L</div>
+              <div class="stat-value" data-live="water">4.1 L</div>
               <div class="stat-meta">Goal 7 L</div>
               <div class="stat-progress">
                 <div class="stat-progress-bar"></div>
               </div>
             </article>
 
-            <article class="stat-card" style="--progress: 91%">
+            <article
+              class="stat-card"
+              style="--progress: 91%"
+              data-live-progress="sleep"
+            >
               <div class="stat-card-header">
                 <span class="stat-label">Sleep Quality</span>
                 <span class="card-badge new">New</span>
@@ -936,7 +952,7 @@
                   </svg>
                 </span>
               </div>
-              <div class="stat-value">8.3 h</div>
+              <div class="stat-value" data-live="sleep">8.3 h</div>
               <div class="stat-meta">+0.4 h vs last week</div>
               <div class="stat-progress">
                 <div class="stat-progress-bar"></div>
@@ -1004,7 +1020,7 @@
                 <span class="card-badge new">New</span>
                 <span class="metric-trend up">+1.2%</span>
               </div>
-              <div class="metric-value">82.4 kg</div>
+              <div class="metric-value" data-live="weight">82.4 kg</div>
               <div class="metric-meta">Last check: 2 days ago</div>
             </article>
 
@@ -1014,7 +1030,7 @@
                 <span class="card-badge alert">Alert</span>
                 <span class="metric-trend down">-3%</span>
               </div>
-              <div class="metric-value">58 bpm</div>
+              <div class="metric-value" data-live="bpm">58 bpm</div>
               <div class="metric-meta">7-day average</div>
             </article>
 
@@ -1024,7 +1040,7 @@
                 <span class="card-badge pro">Pro</span>
                 <span class="metric-trend neutral">Stable</span>
               </div>
-              <div class="metric-value">23.1</div>
+              <div class="metric-value" data-live="bmi">23.1</div>
               <div class="metric-meta">Healthy range</div>
             </article>
           </section>
@@ -1151,6 +1167,158 @@
               </ul>
             </section>
           </div>
+
+          <section class="insights-grid">
+            <article class="panel-card mini-chart-card">
+              <div class="panel-header">
+                <div>
+                  <h3>Water intake (liters)</h3>
+                  <p>Daily hydration snapshot.</p>
+                </div>
+                <span class="card-badge new">New</span>
+              </div>
+              <div class="mini-bars" aria-label="Water intake mini chart">
+                <div
+                  class="mini-bar"
+                  style="--bar: 62%"
+                  data-live-bar
+                  data-value="2.2"
+                  data-max="3.6"
+                >
+                  <span class="mini-bar-value">2.2 L</span>
+                  <span class="mini-bar-label">Sun</span>
+                </div>
+                <div
+                  class="mini-bar"
+                  style="--bar: 78%"
+                  data-live-bar
+                  data-value="2.8"
+                  data-max="3.6"
+                >
+                  <span class="mini-bar-value">2.8 L</span>
+                  <span class="mini-bar-label">Mon</span>
+                </div>
+                <div
+                  class="mini-bar"
+                  style="--bar: 54%"
+                  data-live-bar
+                  data-value="1.9"
+                  data-max="3.6"
+                >
+                  <span class="mini-bar-value">1.9 L</span>
+                  <span class="mini-bar-label">Tue</span>
+                </div>
+                <div
+                  class="mini-bar"
+                  style="--bar: 86%"
+                  data-live-bar
+                  data-value="3.1"
+                  data-max="3.6"
+                >
+                  <span class="mini-bar-value">3.1 L</span>
+                  <span class="mini-bar-label">Wed</span>
+                </div>
+                <div
+                  class="mini-bar"
+                  style="--bar: 70%"
+                  data-live-bar
+                  data-value="2.5"
+                  data-max="3.6"
+                >
+                  <span class="mini-bar-value">2.5 L</span>
+                  <span class="mini-bar-label">Thu</span>
+                </div>
+                <div
+                  class="mini-bar"
+                  style="--bar: 58%"
+                  data-live-bar
+                  data-value="2.1"
+                  data-max="3.6"
+                >
+                  <span class="mini-bar-value">2.1 L</span>
+                  <span class="mini-bar-label">Fri</span>
+                </div>
+                <div
+                  class="mini-bar"
+                  style="--bar: 74%"
+                  data-live-bar
+                  data-value="2.7"
+                  data-max="3.6"
+                >
+                  <span class="mini-bar-value">2.7 L</span>
+                  <span class="mini-bar-label">Sat</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel-card mood-card">
+              <div class="panel-header">
+                <div>
+                  <h3>Daily mood</h3>
+                  <p>Team sentiment by day.</p>
+                </div>
+                <span class="card-badge pro">Pro</span>
+              </div>
+              <div class="mood-grid" role="list">
+                <div class="mood-day is-active" role="listitem">
+                  <span class="mood-label">Sun</span>
+                  <div class="mood-dots">
+                    <span class="mood-dot low"></span>
+                    <span class="mood-dot mid"></span>
+                    <span class="mood-dot high"></span>
+                  </div>
+                </div>
+                <div class="mood-day" role="listitem">
+                  <span class="mood-label">Mon</span>
+                  <div class="mood-dots">
+                    <span class="mood-dot mid"></span>
+                    <span class="mood-dot high"></span>
+                    <span class="mood-dot peak"></span>
+                  </div>
+                </div>
+                <div class="mood-day" role="listitem">
+                  <span class="mood-label">Tue</span>
+                  <div class="mood-dots">
+                    <span class="mood-dot low"></span>
+                    <span class="mood-dot mid"></span>
+                    <span class="mood-dot low"></span>
+                  </div>
+                </div>
+                <div class="mood-day" role="listitem">
+                  <span class="mood-label">Wed</span>
+                  <div class="mood-dots">
+                    <span class="mood-dot mid"></span>
+                    <span class="mood-dot high"></span>
+                    <span class="mood-dot mid"></span>
+                  </div>
+                </div>
+                <div class="mood-day" role="listitem">
+                  <span class="mood-label">Thu</span>
+                  <div class="mood-dots">
+                    <span class="mood-dot low"></span>
+                    <span class="mood-dot mid"></span>
+                    <span class="mood-dot high"></span>
+                  </div>
+                </div>
+                <div class="mood-day" role="listitem">
+                  <span class="mood-label">Fri</span>
+                  <div class="mood-dots">
+                    <span class="mood-dot mid"></span>
+                    <span class="mood-dot high"></span>
+                    <span class="mood-dot peak"></span>
+                  </div>
+                </div>
+                <div class="mood-day" role="listitem">
+                  <span class="mood-label">Sat</span>
+                  <div class="mood-dots">
+                    <span class="mood-dot low"></span>
+                    <span class="mood-dot mid"></span>
+                    <span class="mood-dot high"></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
         </div>
       </main>
     </div>

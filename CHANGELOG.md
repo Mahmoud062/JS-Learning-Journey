@@ -134,21 +134,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [Unreleased]
+## [0.5.0] - 2026-02-19
 
 ### Added
 
 - Chart.js dashboard section with bar, line, and doughnut charts
 - Chart tooltip styling and legend theming
+- Daily mood visualization widget with compact indicators
+- Water intake mini chart with daily bars
+- Real-time data updates for key metrics and charts
 
 ### Changed
 
 - Chart datasets expanded with goal and trend data
 
-### Planned for Phase 5
+---
 
-- Daily mood visualization
-- Real-time data updates
+## [Unreleased]
 
 ### Future Enhancements
 

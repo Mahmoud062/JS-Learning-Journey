@@ -16,6 +16,10 @@ const DashboardApp = (() => {
     activityFilter: ".activity-filter",
     activityItem: ".activity-item",
     activityActiveClass: "active",
+    liveMetric: "[data-live]",
+    liveProgressCard: "[data-live-progress]",
+    miniBar: "[data-live-bar]",
+    moodDay: ".mood-day",
   };
 
   const DOM = {
@@ -30,7 +34,20 @@ const DashboardApp = (() => {
     waterChart: null,
     activityFilters: null,
     activityItems: null,
+    liveMetrics: null,
+    liveProgressCards: null,
+    miniBars: null,
+    moodDays: null,
   };
+
+  const charts = {
+    calories: null,
+    tracking: null,
+    water: null,
+  };
+
+  const liveValues = {};
+  let liveTimerId = null;
 
   const cacheDOMElements = () => {
     DOM.sidebarToggle = document.querySelector(selectors.sidebarToggleButton);
@@ -46,6 +63,12 @@ const DashboardApp = (() => {
     DOM.waterChart = document.getElementById(selectors.waterChart);
     DOM.activityFilters = document.querySelectorAll(selectors.activityFilter);
     DOM.activityItems = document.querySelectorAll(selectors.activityItem);
+    DOM.liveMetrics = document.querySelectorAll(selectors.liveMetric);
+    DOM.liveProgressCards = document.querySelectorAll(
+      selectors.liveProgressCard,
+    );
+    DOM.miniBars = document.querySelectorAll(selectors.miniBar);
+    DOM.moodDays = document.querySelectorAll(selectors.moodDay);
   };
 
   const toggleSidebar = () => {
@@ -156,7 +179,7 @@ const DashboardApp = (() => {
     const axisGrid = { color: "rgba(48, 54, 61, 0.6)" };
 
     if (DOM.caloriesChart) {
-      new Chart(DOM.caloriesChart, {
+      charts.calories = new Chart(DOM.caloriesChart, {
         type: "bar",
         data: {
           labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
@@ -197,7 +220,7 @@ const DashboardApp = (() => {
     }
 
     if (DOM.trackingChart) {
-      new Chart(DOM.trackingChart, {
+      charts.tracking = new Chart(DOM.trackingChart, {
         type: "line",
         data: {
           labels: ["W1", "W2", "W3", "W4", "W5", "W6"],
@@ -233,7 +256,7 @@ const DashboardApp = (() => {
     }
 
     if (DOM.waterChart) {
-      new Chart(DOM.waterChart, {
+      charts.water = new Chart(DOM.waterChart, {
         type: "doughnut",
         data: {
           labels: ["Morning", "Afternoon", "Evening"],
@@ -259,6 +282,161 @@ const DashboardApp = (() => {
         },
       });
     }
+  };
+
+  const clampValue = (value, min, max) => Math.min(max, Math.max(min, value));
+
+  const formatValue = (value, decimals, suffix) => {
+    const formatter = new Intl.NumberFormat("en-US", {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals,
+    });
+    return `${formatter.format(value)}${suffix}`;
+  };
+
+  const parseMetricValue = (value) => {
+    const parsed = Number.parseFloat(value.replace(/[^0-9.]/g, ""));
+    return Number.isNaN(parsed) ? null : parsed;
+  };
+
+  const liveMetricConfig = {
+    calories: { min: 2200, max: 3100, step: 45, decimals: 0, suffix: "" },
+    steps: { min: 16000, max: 22000, step: 140, decimals: 0, suffix: "" },
+    water: { min: 3.2, max: 6.2, step: 0.2, decimals: 1, suffix: " L" },
+    sleep: { min: 6.5, max: 9.2, step: 0.2, decimals: 1, suffix: " h" },
+    weight: { min: 80.8, max: 84.8, step: 0.2, decimals: 1, suffix: " kg" },
+    bpm: { min: 52, max: 68, step: 2, decimals: 0, suffix: " bpm" },
+    bmi: { min: 22.6, max: 24.6, step: 0.1, decimals: 1, suffix: "" },
+  };
+
+  const progressGoals = {
+    calories: 3200,
+    steps: 22000,
+    water: 7,
+    sleep: 9,
+  };
+
+  const getNextValue = (current, config) => {
+    const delta = Math.random() * config.step;
+    const direction = Math.random() > 0.5 ? 1 : -1;
+    const next = clampValue(
+      current + direction * delta,
+      config.min,
+      config.max,
+    );
+    return Number(next.toFixed(config.decimals));
+  };
+
+  const updateLiveMetrics = () => {
+    if (!DOM.liveMetrics?.length) return;
+
+    DOM.liveMetrics.forEach((metric) => {
+      const key = metric.dataset.live;
+      const config = liveMetricConfig[key];
+      if (!config) return;
+
+      const parsedValue = parseMetricValue(metric.textContent);
+      const current = liveValues[key] ?? parsedValue ?? config.min;
+      const nextValue = getNextValue(current, config);
+      liveValues[key] = nextValue;
+      metric.textContent = formatValue(
+        nextValue,
+        config.decimals,
+        config.suffix,
+      );
+    });
+
+    DOM.liveProgressCards?.forEach((card) => {
+      const key = card.dataset.liveProgress;
+      const currentValue = liveValues[key];
+      const goal = progressGoals[key];
+      if (typeof currentValue !== "number" || Number.isNaN(currentValue))
+        return;
+      if (!goal) return;
+      const progress = Math.min(98, Math.max(32, (currentValue / goal) * 100));
+      card.style.setProperty("--progress", `${Math.round(progress)}%`);
+    });
+  };
+
+  const updateMiniBars = () => {
+    if (!DOM.miniBars?.length) return;
+
+    DOM.miniBars.forEach((bar) => {
+      const max = Number.parseFloat(bar.dataset.max) || 3.6;
+      const current = Number.parseFloat(bar.dataset.value) || 2;
+      const delta = Math.random() * 0.35;
+      const nextValue = clampValue(
+        current + (Math.random() > 0.5 ? delta : -delta),
+        1.4,
+        max,
+      );
+      const roundedValue = Number(nextValue.toFixed(1));
+      bar.dataset.value = String(roundedValue);
+      bar.style.setProperty(
+        "--bar",
+        `${Math.round((roundedValue / max) * 100)}%`,
+      );
+      const valueLabel = bar.querySelector(".mini-bar-value");
+      if (valueLabel) {
+        valueLabel.textContent = `${roundedValue.toFixed(1)} L`;
+      }
+    });
+  };
+
+  const updateMoodHighlight = () => {
+    if (!DOM.moodDays?.length) return;
+    DOM.moodDays.forEach((day) => day.classList.remove("is-active"));
+    const nextIndex = Math.floor(Math.random() * DOM.moodDays.length);
+    DOM.moodDays[nextIndex]?.classList.add("is-active");
+  };
+
+  const updateCharts = () => {
+    if (charts.calories) {
+      const dataset = charts.calories.data.datasets[0];
+      dataset.data = dataset.data.map((value) =>
+        clampValue(value + (Math.random() * 80 - 40), 420, 980),
+      );
+      charts.calories.update();
+    }
+
+    if (charts.tracking) {
+      const dataset = charts.tracking.data.datasets[0];
+      dataset.data = dataset.data.map((value) =>
+        clampValue(value + (Math.random() * 6 - 3), 55, 88),
+      );
+      charts.tracking.update();
+    }
+
+    if (charts.water) {
+      const slices = [
+        Math.random() * 35 + 20,
+        Math.random() * 30 + 20,
+        Math.random() * 25 + 15,
+      ];
+      const total = slices.reduce((sum, value) => sum + value, 0);
+      const normalized = slices.map((value) =>
+        Math.round((value / total) * 100),
+      );
+      const difference =
+        100 - normalized.reduce((sum, value) => sum + value, 0);
+      normalized[0] = normalized[0] + difference;
+      charts.water.data.datasets[0].data = normalized;
+      charts.water.update();
+    }
+  };
+
+  const startLiveUpdates = () => {
+    if (liveTimerId) return;
+    updateLiveMetrics();
+    updateMiniBars();
+    updateMoodHighlight();
+    updateCharts();
+    liveTimerId = setInterval(() => {
+      updateLiveMetrics();
+      updateMiniBars();
+      updateMoodHighlight();
+      updateCharts();
+    }, 4500);
   };
 
   const handleNavigationLinkClick = (event) => {
@@ -297,6 +475,7 @@ const DashboardApp = (() => {
     cacheDOMElements();
     attachEventListeners();
     initializeCharts();
+    startLiveUpdates();
   };
 
   return { initialize };

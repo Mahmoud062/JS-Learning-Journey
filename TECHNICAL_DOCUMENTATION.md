@@ -474,10 +474,12 @@ grid-template-areas:
 
 ## Version History
 
-**v0.5.0** - Phase 5 In Progress
+**v0.5.0** - Phase 5 Complete
 
 - Chart.js integration with themed tooltips and legends
-- Chart datasets with goal and trend context
+- Daily mood widget with compact sentiment indicators
+- Water intake mini chart with daily bars
+- Real-time data updates for key metrics and charts
 
 **v0.4.0** - Phase 4 Complete
 
