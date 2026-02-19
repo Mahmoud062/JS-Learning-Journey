@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.3.0] - 2026-02-19
+
+### Added
+
+- Header search bar with inline icon and focus state
+- Notification dropdown with status dots and quick actions
+- User profile menu with avatar and account actions
+- Dropdown interaction logic with outside click and Escape close
+- Google Fonts typography (Space Grotesk and IBM Plex Sans)
+- Subtle background gradients for atmospheric depth
+
+### Changed
+
+- Header layout updated to support actions and search
+- README and technical documentation updated for Phase 3
+
+---
+
 ## [0.2.0] - 2026-02-11
 
 ### Added
@@ -99,32 +117,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.4.0] - 2026-02-19
+
+### Added
+
+- Phase 4 dashboard cards layout (stats grid, weekly plan, activity list)
+- Personal metrics cards for weight, BPM, and BMI
+- Progress indicators for stat cards and training focus
+- Activity filter tabs for Recent activity panel
+- Card badges for status highlights (New/Pro/Alert)
+- Activity panel See all link with icon
+
+### Changed
+
+- Main content layout updated for dashboard card composition
+
+---
+
 ## [Unreleased]
 
-### Planned for 0.3.0 (Phase 3)
+### Added
 
-- Top header search bar functionality
-- Notification dropdown component
-- User profile menu with avatar
-- Search autocomplete/suggestions
-- Header action buttons
-- Mobile hamburger menu
+- Chart.js dashboard section with bar, line, and doughnut charts
+- Chart tooltip styling and legend theming
 
-### Planned for 0.4.0 (Phase 4)
+### Changed
 
-- Fitness stat cards (Water, Calories, Weight, BPM)
-- Metric visualization components
-- Progress indicators
-- Activity feed widget
-- Personal data cards
-- Recent activities list
+- Chart datasets expanded with goal and trend data
 
-### Planned for 0.5.0 (Phase 5)
+### Planned for Phase 5
 
-- Chart.js integration
-- Bar chart component (Statistics)
-- Line chart component (Tracking History)
-- Doughnut chart (Water Intake)
 - Daily mood visualization
 - Real-time data updates
 
@@ -164,4 +186,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 
 **Maintained by**: Development Team  
-**Last Updated**: February 11, 2026
+**Last Updated**: February 19, 2026

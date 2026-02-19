@@ -1,6 +1,7 @@
 # Fitness Dashboard
 
-Enterprise-grade fitness tracking dashboard with advanced UI/UX patterns and dark theme implementation.
+Enterprise-grade fitness tracking dashboard built with a Menilo-inspired dark
+theme, modern layout patterns, and performance-minded UI composition.
 
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -11,9 +12,19 @@ Enterprise-grade fitness tracking dashboard with advanced UI/UX patterns and dar
 
 ## Overview
 
-Professional fitness analytics dashboard implementing modern web architecture patterns, Menilo dark theme design system, and performance-optimized rendering strategies. Built with vanilla JavaScript following SOLID principles and clean code practices.
+Professional fitness analytics dashboard implementing modern web architecture
+patterns, a Menilo-inspired design system, and performance-optimized rendering
+strategies. Built with vanilla JavaScript and clean, modular code conventions.
 
-**Current Status**: Phase 2 Complete - Navigation System Implemented
+**Current Status**: Phase 5 In Progress - Charts Integration
+
+---
+
+## What's New
+
+- Chart.js visualizations with themed tooltips and legends
+- Activity filter tabs for faster triage of recent sessions
+- Status badges (New/Pro/Alert) across key cards
 
 ---
 
@@ -27,7 +38,8 @@ Professional fitness analytics dashboard implementing modern web architecture pa
 | **CSS3 Grid Layout**          | Page composition   | Named template areas, explicit grid positioning |
 | **CSS Custom Properties**     | Design tokens      | Centralized theming, runtime customization      |
 | **Vanilla JavaScript (ES6+)** | Application logic  | Module pattern, event delegation, DOM caching   |
-| **Chart.js**                  | Data visualization | Planned for Phase 5                             |
+| **Google Fonts**              | Typography         | Space Grotesk, IBM Plex Sans                    |
+| **Chart.js**                  | Data visualization | Phase 5 charts (bar, line, doughnut)            |
 
 ### Design System
 
@@ -40,9 +52,9 @@ Professional fitness analytics dashboard implementing modern web architecture pa
 
 **Performance Characteristics**
 
-- Zero external dependencies (current phase)
+- Chart.js dependency (Phase 5, CDN)
 - ~6KB CSS footprint (unminified)
-- <2KB JavaScript payload (unminified)
+- Core JavaScript payload <2KB (excluding Chart.js)
 - GPU-accelerated animations
 
 ---
@@ -85,17 +97,24 @@ fitness-dashboard/
 - Upgrade CTA with gradient effects
 - Accessibility features (ARIA labels, semantic HTML)
 
-### Phase 3: Header Component 🔄
+### Phase 3: Header Component ✅
 
-_Planned: Search functionality, notifications, user profile dropdown_
+- Search input with contextual placeholder
+- Notifications dropdown panel
+- User profile dropdown menu
+- Compact navbar icon row and avatar-only profile trigger
 
-### Phase 4: Dashboard Cards 📋
+### Phase 4: Dashboard Cards ✅
 
-_Planned: Stat widgets, metric cards, progress indicators_
+- Stat widgets for calories, steps, water, sleep
+- Personal metrics cards (weight, BPM, BMI)
+- Weekly plan progress indicators
+- Recent activity list
+- Activity filter tabs and status badges
 
 ### Phase 5: Data Visualization 📊
 
-_Planned: Chart.js integration, real-time data updates_
+_In Progress: Chart.js integration with themed tooltips and legends_
 
 ---
 
@@ -278,12 +297,12 @@ Centralized CSS custom properties for consistent theming:
 
 - ✅ Phase 1: Foundation
 - ✅ Phase 2: Sidebar Navigation
-- 🔄 Phase 3: Header Component
-- 📋 Phase 4: Dashboard Cards
+- ✅ Phase 3: Header Component
+- ✅ Phase 4: Dashboard Cards
 
 **Q2 2026**
 
-- 📋 Phase 5: Chart.js Integration
+- 🔄 Phase 5: Chart.js Integration
 - 📋 Responsive Breakpoints
 - 📋 Theme Switcher
 - 📋 User Preferences Persistence
@@ -305,6 +324,6 @@ Licensed under MIT License.
 
 ---
 
-**Version**: 0.2.0  
+**Version**: 0.5.0  
 **Status**: Active Development  
-**Last Updated**: February 11, 2026
+**Last Updated**: February 19, 2026

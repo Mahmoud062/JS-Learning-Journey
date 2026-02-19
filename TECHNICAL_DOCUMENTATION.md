@@ -108,6 +108,65 @@ The sidebar implements a hierarchical navigation pattern with the following comp
 
 ---
 
+### Header Component
+
+**Structure:**
+The header blends search, notifications, and profile actions into a single
+responsive bar:
+
+1. **Collapse Control**: Compact double-chevron toggle
+2. **Search Zone**: Inline search with icon prefix
+3. **Actions Zone**: Icon row, notifications dropdown, avatar menu
+
+**State Management:**
+
+- Dropdown visibility via `.is-open` class
+- `aria-expanded` sync on trigger buttons
+- Escape key and outside click close behavior
+
+**Accessibility:**
+
+- `aria-haspopup` and `aria-expanded` for menus
+- `role="search"` applied to the header search wrapper
+- Icon buttons include descriptive `aria-label` attributes
+
+---
+
+### Dashboard Cards
+
+**Structure:**
+The main content area is composed of three surface layers:
+
+1. **Stats Grid**: Four KPI cards with icon badges and progress bars
+2. **Weekly Plan Panel**: Progress indicators per training focus
+3. **Recent Activity Panel**: Latest team sessions with inline metrics
+4. **Personal Metrics**: Compact cards for weight, BPM, and BMI
+5. **Recent Activity Filters**: Quick tabs for category filtering
+
+**Visual Strategy:**
+
+- Shared card radius, border, and shadow tokens
+- Gradient progress bars for quick scanning
+- Compact activity rows to keep density readable
+
+---
+
+### Data Visualization
+
+**Implementation:**
+
+- Chart.js loaded via CDN
+- Three chart types: bar, line, doughnut
+- Consistent color tokens for dataset styling
+
+**Behavior:**
+
+- Charts initialize after DOM cache
+- Responsive canvas sizing with fixed card height
+- Shared tooltip theming and legend styling for consistency
+
+---
+
 ## JavaScript Architecture
 
 ### Module Pattern (IIFE)
@@ -215,6 +274,7 @@ Centralized theming through CSS custom properties enables:
 1. Sidebar collapse state (`.collapsed`)
 2. Active navigation item (`.active`)
 3. Search input value (DOM-managed)
+4. Activity filter tabs (`.activity-filter.active`)
 
 **State Transitions:**
 
@@ -265,9 +325,9 @@ For complex state requirements (Phase 4+):
 
 **Bundle Size:**
 
-- Zero external dependencies (Phase 1-2)
+- Chart.js dependency loaded via CDN (Phase 5)
 - Minimal CSS footprint (~6KB unminified)
-- JavaScript payload < 2KB unminified
+- Core JavaScript payload < 2KB (excluding Chart.js)
 
 **Load Strategy:**
 
@@ -408,11 +468,25 @@ grid-template-areas:
 2. **Navigation State Persistence**: Active state resets on page refresh; requires localStorage implementation
 3. **Search Functionality**: UI complete, search logic pending (Phase 3)
 4. **Keyboard Navigation**: Arrow key navigation for menu items pending
-5. **Mobile Responsiveness**: Breakpoint implementations scheduled for Phase 3
+5. **Mobile Responsiveness**: Breakpoint enhancements ongoing
 
 ---
 
 ## Version History
+
+**v0.5.0** - Phase 5 In Progress
+
+- Chart.js integration with themed tooltips and legends
+- Chart datasets with goal and trend context
+
+**v0.4.0** - Phase 4 Complete
+
+- Dashboard cards, activity filters, and status badges
+- Personal metrics cards for weight, BPM, and BMI
+
+**v0.3.0** - Phase 3 Complete
+
+- Compact header with icon row and dropdown actions
 
 **v0.2.0** - Phase 2 Complete
 
