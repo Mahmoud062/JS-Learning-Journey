@@ -441,18 +441,24 @@ const DashboardApp = (() => {
 
   const handleNavigationLinkClick = (event) => {
     const currentLink = event.currentTarget;
+    const navItem = currentLink.closest(".nav-item");
+    const hasSubmenu = navItem?.classList.contains("has-submenu");
     const navigationArrow = currentLink.querySelector(
       selectors.navigationArrow,
     );
 
-    if (!navigationArrow) return;
+    if (hasSubmenu) {
+      event.preventDefault();
+      navItem.classList.toggle("open");
+    }
 
-    event.preventDefault();
     deactivateAllNavigationLinks(currentLink);
     currentLink.classList.toggle(selectors.activeClass);
 
-    const isActive = currentLink.classList.contains(selectors.activeClass);
-    rotateNavigationArrow(navigationArrow, isActive);
+    if (navigationArrow && !hasSubmenu) {
+      const isActive = currentLink.classList.contains(selectors.activeClass);
+      rotateNavigationArrow(navigationArrow, isActive);
+    }
   };
 
   const attachEventListeners = () => {
