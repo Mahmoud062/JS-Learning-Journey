@@ -1,0 +1,35 @@
+/* ============================================
+   Global Reset & Base Styles
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  background:
+    radial-gradient(
+      1200px 600px at 15% -10%,
+      rgba(31, 111, 235, 0.15),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 85% 0%,
+      rgba(88, 86, 214, 0.12),
+      transparent 55%
+    ),
+    var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+}

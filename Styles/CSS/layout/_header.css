@@ -1,0 +1,139 @@
+/* ============================================
+   Dashboard Header
+   ============================================ */
+
+.dashboard-header {
+  grid-area: header;
+  background: linear-gradient(
+    120deg,
+    rgba(22, 27, 34, 0.98) 0%,
+    rgba(33, 38, 45, 0.95) 100%
+  );
+  border-bottom: 1px solid var(--border-primary);
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+}
+
+.dashboard-header h1 {
+  font-size: var(--font-size-xl);
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+  flex: 1;
+  min-width: 0;
+}
+
+.header-collapse {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-primary);
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.header-collapse:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-heading);
+}
+
+/* ---- Search bar ---- */
+
+.header-search {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--border-radius-md);
+  padding: 0 var(--spacing-md);
+  min-width: 220px;
+  max-width: 360px;
+  width: 100%;
+  transition: all var(--transition-fast);
+}
+
+.header-search:focus-within {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.2);
+  background-color: var(--bg-tertiary);
+}
+
+.header-search-icon {
+  color: var(--text-muted);
+}
+
+.header-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-sm) 0;
+  outline: none;
+}
+
+.header-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ---- Action buttons ---- */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.header-icon-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-primary);
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.icon-button:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-heading);
+}
+
+.notification-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background-color: var(--accent-danger);
+  color: #ffffff;
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 999px;
+  line-height: 1;
+}

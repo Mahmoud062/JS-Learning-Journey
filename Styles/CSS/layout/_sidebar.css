@@ -1,0 +1,455 @@
+/* ============================================
+   Sidebar — Navigation, Search & Footer
+   ============================================ */
+
+.dashboard-sidebar {
+  grid-area: sidebar;
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--border-primary);
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-primary) var(--bg-secondary);
+}
+
+.dashboard-sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dashboard-sidebar::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.dashboard-sidebar::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: 4px;
+}
+
+.dashboard-sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-hover);
+}
+
+/* ---- Header / Brand ---- */
+
+.sidebar-header {
+  padding: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.brand-icon {
+  color: var(--accent-primary);
+  width: 32px;
+  height: 32px;
+}
+
+.brand-text {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-heading);
+  letter-spacing: 0.5px;
+}
+
+.sidebar-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.sidebar-toggle:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* ---- Sidebar search ---- */
+
+.sidebar-search {
+  margin: var(--spacing-lg);
+  position: relative;
+}
+
+.sidebar-search .search-icon {
+  position: absolute;
+  left: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) 40px;
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.search-input:focus {
+  border-color: var(--accent-primary);
+  background-color: var(--bg-tertiary);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ---- Navigation ---- */
+
+.sidebar-nav {
+  flex: 1;
+  padding: 0 var(--spacing-lg);
+  overflow-y: auto;
+}
+
+.nav-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.nav-section-title {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  padding: 0 var(--spacing-sm);
+}
+
+.nav-item {
+  margin-bottom: 4px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+  font-size: var(--font-size-sm);
+  position: relative;
+}
+
+.nav-link:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.nav-link.active {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.nav-link.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 70%;
+  background-color: var(--accent-primary);
+  border-radius: 0 2px 2px 0;
+}
+
+.nav-icon {
+  color: currentColor;
+  flex-shrink: 0;
+}
+
+.nav-link span {
+  flex: 1;
+}
+
+.nav-arrow {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.nav-item.open > .nav-link .nav-arrow {
+  transform: rotate(90deg);
+}
+
+.nav-link:hover .nav-arrow {
+  color: var(--text-secondary);
+}
+
+/* ---- Submenus ---- */
+
+.nav-submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-slow) ease;
+}
+
+.nav-item.open > .nav-submenu {
+  max-height: 600px;
+}
+
+.nav-submenu li {
+  padding: 0;
+}
+
+.submenu-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 6px var(--spacing-md) 6px 44px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.submenu-link:hover {
+  color: var(--text-primary);
+  background-color: rgba(48, 54, 61, 0.5);
+}
+
+.submenu-link.active {
+  color: var(--accent-primary);
+}
+
+.submenu-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1.5px solid var(--text-muted);
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.submenu-link:hover .submenu-dot {
+  border-color: var(--text-secondary);
+}
+
+.submenu-link.active .submenu-dot {
+  border-color: var(--accent-primary);
+  background-color: var(--accent-primary);
+}
+
+/* ---- Footer / Upgrade ---- */
+
+.sidebar-footer {
+  padding: var(--spacing-lg);
+  border-top: 1px solid var(--border-primary);
+  background-color: var(--bg-secondary);
+}
+
+.upgrade-card {
+  background: linear-gradient(135deg, #2d2a4a 0%, #1a1831 100%);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  border: 1px solid rgba(88, 86, 214, 0.2);
+}
+
+.upgrade-icon {
+  margin: 0 auto var(--spacing-md);
+  width: 60px;
+  height: 60px;
+  background: rgba(88, 86, 214, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upgrade-card h3 {
+  font-size: var(--font-size-sm);
+  color: var(--text-heading);
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.upgrade-card p {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.4;
+}
+
+.btn-learn-more {
+  display: inline-block;
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.btn-learn-more:hover {
+  color: var(--accent-hover);
+}
+
+.btn-upgrade {
+  width: 100%;
+  background: linear-gradient(135deg, #5856d6 0%, #4845b4 100%);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(88, 86, 214, 0.3);
+}
+
+.btn-upgrade:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(88, 86, 214, 0.4);
+}
+
+/* ============================================
+   Collapsed Sidebar State
+   ============================================ */
+
+/*
+ * When either toggle button is clicked, JS adds .collapsed to
+ * .dashboard-sidebar and .sidebar-collapsed to .dashboard-container.
+ * Below we hide text labels, search, section titles, submenus,
+ * footer — and keep only centred icons.  Transitions are smooth
+ * thanks to the shared --transition-normal timing.
+ */
+
+/* -- Shared transition on elements that will animate -- */
+.dashboard-sidebar,
+.sidebar-header,
+.brand-text,
+.sidebar-search,
+.nav-section-title,
+.nav-link,
+.nav-link span,
+.nav-arrow,
+.sidebar-footer {
+  transition:
+    opacity var(--transition-normal),
+    width var(--transition-normal),
+    padding var(--transition-normal),
+    margin var(--transition-normal),
+    max-height var(--transition-normal);
+}
+
+/* -- Rotate the toggle arrow to point right (→ "expand") -- */
+.dashboard-sidebar.collapsed .sidebar-toggle svg {
+  transform: rotate(180deg);
+  transition: transform var(--transition-normal);
+}
+
+/* -- Header — centre the brand icon, hide text -- */
+.dashboard-sidebar.collapsed .sidebar-header {
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-xs);
+}
+
+.dashboard-sidebar.collapsed .brand-text {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.dashboard-sidebar.collapsed .sidebar-toggle {
+  display: none;
+}
+
+/* -- Hide sidebar search -- */
+.dashboard-sidebar.collapsed .sidebar-search {
+  opacity: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* -- Hide section titles -- */
+.dashboard-sidebar.collapsed .nav-section-title {
+  opacity: 0;
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* -- Nav links: icon-only, centred -- */
+.dashboard-sidebar.collapsed .nav-link {
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-xs);
+  gap: 0;
+}
+
+.dashboard-sidebar.collapsed .nav-link span {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  position: absolute;
+  pointer-events: none;
+}
+
+.dashboard-sidebar.collapsed .nav-arrow {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* -- Active indicator bar — re-centre for icon-only layout -- */
+.dashboard-sidebar.collapsed .nav-link.active::before {
+  height: 60%;
+}
+
+/* -- Hide submenus entirely -- */
+.dashboard-sidebar.collapsed .nav-submenu {
+  display: none !important;
+}
+
+/* -- Hide footer / upgrade card -- */
+.dashboard-sidebar.collapsed .sidebar-footer {
+  opacity: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  pointer-events: none;
+}

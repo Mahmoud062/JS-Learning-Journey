@@ -1,0 +1,100 @@
+/* ============================================
+   Grid / Apps Quick-Access Dropdown
+   ============================================ */
+
+/* Wrapper keeps the button + dropdown positioned together */
+.grid-apps-wrapper {
+  position: relative;
+}
+
+/* Dropdown panel — hidden by default */
+.grid-apps-dropdown {
+  position: absolute;
+  top: calc(100% + var(--spacing-sm));
+  right: 0;
+  width: 280px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-md);
+  z-index: 50;
+
+  /* Hidden state */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition:
+    opacity var(--transition-fast),
+    visibility var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+/* Visible state — toggled via JS */
+.grid-apps-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Header */
+.grid-apps-header {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+/* 3-column icon grid */
+.grid-apps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xs);
+}
+
+/* Individual app tile */
+.grid-app-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: var(--spacing-sm) var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.grid-app-item:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.grid-app-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-md);
+  background-color: var(--bg-tertiary);
+  font-size: 1.15rem;
+  transition: background-color var(--transition-fast);
+}
+
+.grid-app-item:hover .grid-app-icon {
+  background-color: var(--bg-hover);
+}
+
+/* Active state on the trigger button */
+.icon-button.active {
+  background-color: var(--accent-primary);
+  color: var(--text-heading);
+  border-color: var(--accent-primary);
+}

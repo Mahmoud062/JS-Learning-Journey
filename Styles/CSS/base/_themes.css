@@ -1,0 +1,77 @@
+/* ============================================
+   Theme Overrides — Light Mode
+   ============================================
+   The default design tokens in _variables.css define the dark
+   palette.  When `<body>` does NOT carry the `.dark-theme` class
+   the overrides below remap every token to a light-friendly value
+   so the entire UI flips without touching component CSS.
+   ============================================ */
+
+body:not(.dark-theme) {
+  /* Backgrounds */
+  --bg-primary: #f5f6f8;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e8ecf0;
+  --bg-hover: #dde2e8;
+
+  /* Text */
+  --text-primary: #1f2328;
+  --text-secondary: #57606a;
+  --text-muted: #6e7781;
+  --text-heading: #0d1117;
+
+  /* Accents (kept vibrant; small tweaks for contrast on light) */
+  --accent-primary: #1f6feb;
+  --accent-hover: #0969da;
+  --accent-active: #0550ae;
+  --accent-success: #1a7f37;
+  --accent-warning: #9a6700;
+  --accent-danger: #cf222e;
+
+  /* Borders */
+  --border-primary: #d0d7de;
+  --border-secondary: #e1e4e8;
+
+  /* Shadows (lighter on white backgrounds) */
+  --shadow-sm: 0 1px 3px rgba(31, 35, 40, 0.08);
+  --shadow-md: 0 4px 12px rgba(31, 35, 40, 0.1);
+  --shadow-lg: 0 8px 24px rgba(31, 35, 40, 0.14);
+}
+
+/* --- Header gradient override for light mode --- */
+body:not(.dark-theme) .dashboard-header {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(245, 246, 248, 0.95) 100%
+  );
+}
+
+/* --- Sidebar upgrade card inherits a hard-coded gradient; override: --- */
+body:not(.dark-theme) .upgrade-card {
+  background: linear-gradient(135deg, #eef1fe 0%, #dde4ff 100%);
+  border-color: rgba(88, 86, 214, 0.15);
+}
+
+/* --- Chart tooltip stays dark for contrast in both themes --- */
+
+/* --- Scrollbar in light mode --- */
+body:not(.dark-theme) .dashboard-main,
+body:not(.dark-theme) .dashboard-sidebar {
+  scrollbar-color: var(--border-primary) var(--bg-secondary);
+}
+
+body:not(.dark-theme) .dashboard-main::-webkit-scrollbar-track,
+body:not(.dark-theme) .dashboard-sidebar::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+body:not(.dark-theme) .dashboard-main::-webkit-scrollbar-thumb,
+body:not(.dark-theme) .dashboard-sidebar::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+}
+
+/* --- Notification badge keep white text in both themes --- */
+body:not(.dark-theme) .notification-badge {
+  color: #ffffff;
+}

@@ -1,0 +1,122 @@
+/* ============================================
+   Dashboard Grid Shell & Section Layouts
+   ============================================ */
+
+.dashboard-container {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: var(--header-height) 1fr;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main";
+  /* Smooth column resize when sidebar collapses */
+  transition: grid-template-columns var(--transition-normal);
+}
+
+/* Collapsed sidebar — shrink the sidebar grid column to icon-only width */
+.dashboard-container.sidebar-collapsed {
+  grid-template-columns: 80px 1fr;
+}
+
+/* ---- Main content area ---- */
+
+.dashboard-main {
+  grid-area: main;
+  background-color: var(--bg-primary);
+  padding: var(--spacing-xl);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-primary) var(--bg-secondary);
+}
+
+.dashboard-main::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dashboard-main::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.dashboard-main::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: 4px;
+}
+
+.dashboard-main::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-hover);
+}
+
+.main-content-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.main-content-wrapper h2 {
+  font-size: var(--font-size-2xl);
+  color: var(--text-heading);
+  margin-bottom: var(--spacing-xl);
+  font-weight: 600;
+}
+
+/* ---- Page header ---- */
+
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.page-title h2 {
+  margin-bottom: 6px;
+}
+
+.page-subtitle {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.page-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+/* ---- Section grids ---- */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.dashboard-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}

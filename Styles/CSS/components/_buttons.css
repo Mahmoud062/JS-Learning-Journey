@@ -1,0 +1,52 @@
+/* ============================================
+   Buttons — Primary, Secondary & Panel Link
+   ============================================ */
+
+.btn-primary,
+.btn-secondary,
+.panel-link {
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-sm);
+  padding: 8px 16px;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary {
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  box-shadow: 0 6px 14px rgba(31, 111, 235, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--border-primary);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-hover);
+}
+
+.panel-link {
+  background: transparent;
+  color: var(--accent-primary);
+  padding: 6px 12px;
+  border-color: transparent;
+}
+
+.panel-link:hover {
+  background-color: rgba(31, 111, 235, 0.12);
+}
+
+.panel-link.with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}

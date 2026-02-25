@@ -1,0 +1,60 @@
+/* ============================================
+   Accessibility Utilities
+   ============================================ */
+
+/* Skip-navigation link (keyboard a11y) */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--accent-primary);
+  color: #fff;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Hidden SVG sprite container */
+.svg-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* Generic visibility toggle (replaces inline style.display manipulation) */
+.is-hidden {
+  display: none !important;
+}
+
+/* Chart loading-error fallback */
+.chart-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 200px;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  padding: var(--spacing-lg);
+  background-color: var(--bg-tertiary);
+  border: 1px dashed var(--border-primary);
+  border-radius: var(--border-radius-md);
+}
+
+/* Activity empty-state message */
+.activity-empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-lg) 0;
+}

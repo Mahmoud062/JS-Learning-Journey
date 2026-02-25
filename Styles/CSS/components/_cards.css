@@ -1,0 +1,257 @@
+/* ============================================
+   Cards — Stat, Chart, Metric & Panel
+   ============================================ */
+
+/* ---- Stat cards ---- */
+
+.stat-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.stat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* ---- Shared card badge ---- */
+
+.card-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background-color: rgba(31, 111, 235, 0.15);
+  color: var(--accent-primary);
+  text-transform: uppercase;
+}
+
+.card-badge.pro {
+  background-color: rgba(88, 86, 214, 0.2);
+  color: #5856d6;
+}
+
+.card-badge.new {
+  background-color: rgba(63, 185, 80, 0.18);
+  color: var(--accent-success);
+}
+
+.card-badge.alert {
+  background-color: rgba(210, 153, 34, 0.2);
+  color: var(--accent-warning);
+}
+
+/* ---- Stat icon ---- */
+
+.stat-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(31, 111, 235, 0.15);
+  color: var(--accent-primary);
+}
+
+.stat-icon.success {
+  background-color: rgba(63, 185, 80, 0.18);
+  color: var(--accent-success);
+}
+
+.stat-icon.warning {
+  background-color: rgba(210, 153, 34, 0.2);
+  color: var(--accent-warning);
+}
+
+.stat-icon.info {
+  background-color: rgba(88, 86, 214, 0.2);
+  color: #5856d6;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.stat-meta {
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.stat-progress {
+  height: 6px;
+  background-color: var(--bg-tertiary);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.stat-progress-bar {
+  height: 100%;
+  width: var(--progress, 0%);
+  background: linear-gradient(90deg, #1f6feb, #3fb950);
+  border-radius: 999px;
+}
+
+/* ---- Chart cards ---- */
+
+.chart-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  min-height: 320px;
+}
+
+.chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.chart-header .card-badge {
+  align-self: center;
+}
+
+.chart-header h3 {
+  font-size: var(--font-size-lg);
+  color: var(--text-heading);
+  margin-bottom: 4px;
+}
+
+.chart-header p {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.chart-badge {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-secondary);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.chart-canvas {
+  flex: 1;
+  position: relative;
+}
+
+.chart-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ---- Metric cards ---- */
+
+.metric-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.metric-header .card-badge {
+  margin-left: auto;
+  margin-right: var(--spacing-xs);
+}
+
+.metric-trend {
+  font-size: var(--font-size-xs);
+  padding: 2px 8px;
+  border-radius: 999px;
+  background-color: rgba(63, 185, 80, 0.15);
+  color: var(--accent-success);
+}
+
+.metric-trend.down {
+  background-color: rgba(248, 81, 73, 0.15);
+  color: var(--accent-danger);
+}
+
+.metric-trend.neutral {
+  background-color: rgba(210, 153, 34, 0.15);
+  color: var(--accent-warning);
+}
+
+.metric-value {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.metric-meta {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+/* ---- Panel cards ---- */
+
+.panel-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.panel-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.panel-header h3 {
+  font-size: var(--font-size-lg);
+  color: var(--text-heading);
+  margin-bottom: 4px;
+}
+
+.panel-header p {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
