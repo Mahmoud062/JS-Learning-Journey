@@ -332,6 +332,106 @@
         <path d="M7 7h10v10H7z" stroke="currentColor" stroke-width="2" />
         <path d="M10 10h4v4h-4z" stroke="currentColor" stroke-width="2" />
       </symbol>
+
+      <!-- New section icons -->
+      <symbol id="icon-trophy" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M6 9H3V5a1 1 0 0 1 1-1h2"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          d="M18 9h3V5a1 1 0 0 0-1-1h-2"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          d="M6 4h12v6a6 6 0 1 1-12 0V4z"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+        <path
+          d="M12 16v2"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          d="M8 22h8"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path d="M10 22v-4h4v4" stroke="currentColor" stroke-width="2" />
+      </symbol>
+
+      <symbol id="icon-calendar-check" viewBox="0 0 24 24" fill="none">
+        <rect
+          x="3"
+          y="4"
+          width="18"
+          height="18"
+          rx="2"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+        <path
+          d="M16 2v4M8 2v4M3 10h18"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          d="M9 16l2 2 4-4"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </symbol>
+
+      <symbol id="icon-target" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+        <circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="2" />
+        <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="2" />
+      </symbol>
+
+      <symbol id="icon-fire-streak" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M12 2c-2 4-5 6-5 10a5 5 0 0 0 10 0c0-4-3-6-5-10z"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+        <path
+          d="M12 12c-1 2-2 3-2 5a2 2 0 0 0 4 0c0-2-1-3-2-5z"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+      </symbol>
+
+      <symbol id="icon-medal" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="14" r="6" stroke="currentColor" stroke-width="2" />
+        <path
+          d="M8 8V2h8v6"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          d="M12 10v2"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          d="M10 14h4"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </symbol>
     </svg>
 
     <!-- ============================================================
@@ -1253,6 +1353,24 @@
               <div class="metric-value" data-live="bmi">23.1</div>
               <div class="metric-meta">Healthy range</div>
             </article>
+
+            <!-- Steps metric (new) -->
+            <article class="metric-card steps-card">
+              <div class="metric-header">
+                <span class="metric-label">Steps today</span>
+                <span class="card-badge">Daily</span>
+                <span class="metric-trend up">+8%</span>
+              </div>
+              <div class="metric-value" data-live="steps">8,420</div>
+              <div class="metric-meta">Goal: 10,000 steps</div>
+              <div class="metric-mini-chart">
+                <canvas
+                  id="stepsChart"
+                  role="img"
+                  aria-label="Bar chart showing steps for the last 7 days"
+                ></canvas>
+              </div>
+            </article>
           </section>
 
           <!-- ---- Panels (Weekly plan + Activity) ---- -->
@@ -1520,6 +1638,504 @@
                     <span class="mood-dot high"></span>
                   </div>
                 </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- ---- Workout Streak & Upcoming Schedule ---- -->
+          <div class="streak-schedule-grid">
+            <!-- Workout Streak -->
+            <section class="panel-card streak-card">
+              <div class="panel-header">
+                <div>
+                  <h3>Workout streak</h3>
+                  <p>Consistency is key — keep it going!</p>
+                </div>
+                <span class="card-badge alert">Live</span>
+              </div>
+              <div class="streak-stats">
+                <div class="streak-stat main-streak">
+                  <span class="streak-stat-icon">
+                    <svg width="22" height="22" fill="none">
+                      <use href="#icon-fire-streak" />
+                    </svg>
+                  </span>
+                  <span class="streak-stat-value" data-live="streak">12</span>
+                  <span class="streak-stat-label">Day streak</span>
+                </div>
+                <div class="streak-stat">
+                  <span class="streak-stat-value" data-live="streak-best"
+                    >26</span
+                  >
+                  <span class="streak-stat-label">Best streak</span>
+                </div>
+                <div class="streak-stat">
+                  <span class="streak-stat-value" data-live="streak-month"
+                    >22</span
+                  >
+                  <span class="streak-stat-label">This month</span>
+                </div>
+              </div>
+              <div class="streak-heatmap" aria-label="Weekly workout heatmap">
+                <div class="heatmap-day active" data-day="Sun">
+                  <span class="heatmap-label">S</span>
+                </div>
+                <div class="heatmap-day active" data-day="Mon">
+                  <span class="heatmap-label">M</span>
+                </div>
+                <div class="heatmap-day active" data-day="Tue">
+                  <span class="heatmap-label">T</span>
+                </div>
+                <div class="heatmap-day active" data-day="Wed">
+                  <span class="heatmap-label">W</span>
+                </div>
+                <div class="heatmap-day rest" data-day="Thu">
+                  <span class="heatmap-label">T</span>
+                </div>
+                <div class="heatmap-day active" data-day="Fri">
+                  <span class="heatmap-label">F</span>
+                </div>
+                <div class="heatmap-day today" data-day="Sat">
+                  <span class="heatmap-label">S</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Upcoming Schedule -->
+            <section class="panel-card schedule-card">
+              <div class="panel-header">
+                <div>
+                  <h3>Upcoming schedule</h3>
+                  <p>Planned sessions for the week.</p>
+                </div>
+                <button class="panel-link" type="button">View full</button>
+              </div>
+              <ul class="schedule-list">
+                <li class="schedule-item">
+                  <div class="schedule-time">
+                    <span class="schedule-day">Mon</span>
+                    <span class="schedule-hour">07:00</span>
+                  </div>
+                  <div class="schedule-content">
+                    <span class="schedule-title">Upper Body Strength</span>
+                    <span class="schedule-meta">45 min &middot; Ahmed M.</span>
+                  </div>
+                  <span class="schedule-type strength">
+                    <svg width="14" height="14" fill="none">
+                      <use href="#icon-runner" />
+                    </svg>
+                  </span>
+                </li>
+                <li class="schedule-item">
+                  <div class="schedule-time">
+                    <span class="schedule-day">Tue</span>
+                    <span class="schedule-hour">18:30</span>
+                  </div>
+                  <div class="schedule-content">
+                    <span class="schedule-title">HIIT Cardio Session</span>
+                    <span class="schedule-meta">30 min &middot; Lina S.</span>
+                  </div>
+                  <span class="schedule-type cardio">
+                    <svg width="14" height="14" fill="none">
+                      <use href="#icon-flame" />
+                    </svg>
+                  </span>
+                </li>
+                <li class="schedule-item">
+                  <div class="schedule-time">
+                    <span class="schedule-day">Thu</span>
+                    <span class="schedule-hour">06:30</span>
+                  </div>
+                  <div class="schedule-content">
+                    <span class="schedule-title">Yoga & Mobility</span>
+                    <span class="schedule-meta">60 min &middot; Omar A.</span>
+                  </div>
+                  <span class="schedule-type mobility">
+                    <svg width="14" height="14" fill="none">
+                      <use href="#icon-droplet" />
+                    </svg>
+                  </span>
+                </li>
+                <li class="schedule-item">
+                  <div class="schedule-time">
+                    <span class="schedule-day">Sat</span>
+                    <span class="schedule-hour">09:00</span>
+                  </div>
+                  <div class="schedule-content">
+                    <span class="schedule-title">Full Body Circuit</span>
+                    <span class="schedule-meta">50 min &middot; Team</span>
+                  </div>
+                  <span class="schedule-type strength">
+                    <svg width="14" height="14" fill="none">
+                      <use href="#icon-runner" />
+                    </svg>
+                  </span>
+                </li>
+              </ul>
+            </section>
+          </div>
+
+          <!-- ---- Team Leaderboard ---- -->
+          <section
+            class="panel-card leaderboard-card"
+            aria-label="Team leaderboard"
+          >
+            <div class="panel-header">
+              <div>
+                <h3>Team leaderboard</h3>
+                <p>Top performers this week.</p>
+              </div>
+              <span class="card-badge pro">Pro</span>
+            </div>
+            <div class="leaderboard-table-wrap">
+              <table class="leaderboard-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Member</th>
+                    <th>Workouts</th>
+                    <th>Calories</th>
+                    <th>Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="rank-gold">
+                    <td><span class="rank-badge">1</span></td>
+                    <td>
+                      <div class="member-cell">
+                        <span class="member-avatar">LS</span>
+                        <span class="member-name">Lina S.</span>
+                      </div>
+                    </td>
+                    <td>6</td>
+                    <td data-live="lb-cal-1">4,820</td>
+                    <td>
+                      <span class="score-pill gold" data-live="lb-score-1"
+                        >96</span
+                      >
+                    </td>
+                  </tr>
+                  <tr class="rank-silver">
+                    <td><span class="rank-badge">2</span></td>
+                    <td>
+                      <div class="member-cell">
+                        <span class="member-avatar">AM</span>
+                        <span class="member-name">Ahmed M.</span>
+                      </div>
+                    </td>
+                    <td>5</td>
+                    <td data-live="lb-cal-2">4,210</td>
+                    <td>
+                      <span class="score-pill silver" data-live="lb-score-2"
+                        >89</span
+                      >
+                    </td>
+                  </tr>
+                  <tr class="rank-bronze">
+                    <td><span class="rank-badge">3</span></td>
+                    <td>
+                      <div class="member-cell">
+                        <span class="member-avatar">OA</span>
+                        <span class="member-name">Omar A.</span>
+                      </div>
+                    </td>
+                    <td>5</td>
+                    <td data-live="lb-cal-3">3,670</td>
+                    <td>
+                      <span class="score-pill bronze" data-live="lb-score-3"
+                        >82</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="rank-badge">4</span></td>
+                    <td>
+                      <div class="member-cell">
+                        <span class="member-avatar">SJ</span>
+                        <span class="member-name">Sara J.</span>
+                      </div>
+                    </td>
+                    <td>4</td>
+                    <td data-live="lb-cal-4">3,250</td>
+                    <td>
+                      <span class="score-pill" data-live="lb-score-4">75</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="rank-badge">5</span></td>
+                    <td>
+                      <div class="member-cell">
+                        <span class="member-avatar">MR</span>
+                        <span class="member-name">Mahmoud R.</span>
+                      </div>
+                    </td>
+                    <td>3</td>
+                    <td data-live="lb-cal-5">2,890</td>
+                    <td>
+                      <span class="score-pill" data-live="lb-score-5">68</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ---- Goals & Achievements ---- -->
+          <section class="goals-grid" aria-label="Goals and achievements">
+            <article class="panel-card goals-progress-card">
+              <div class="panel-header">
+                <div>
+                  <h3>Monthly goals</h3>
+                  <p>Track your targets for this month.</p>
+                </div>
+                <span class="card-badge new">New</span>
+              </div>
+              <div class="goals-list">
+                <div class="goal-item" style="--goal-progress: 78%">
+                  <div class="goal-info">
+                    <svg width="16" height="16" fill="none">
+                      <use href="#icon-flame" />
+                    </svg>
+                    <span class="goal-name">Burn 60,000 kcal</span>
+                    <span class="goal-percent">78%</span>
+                  </div>
+                  <div class="goal-track">
+                    <div class="goal-fill accent"></div>
+                  </div>
+                  <span class="goal-detail">46,800 / 60,000 kcal</span>
+                </div>
+                <div class="goal-item" style="--goal-progress: 92%">
+                  <div class="goal-info">
+                    <svg width="16" height="16" fill="none">
+                      <use href="#icon-runner" />
+                    </svg>
+                    <span class="goal-name">Run 100 km</span>
+                    <span class="goal-percent">92%</span>
+                  </div>
+                  <div class="goal-track">
+                    <div class="goal-fill success"></div>
+                  </div>
+                  <span class="goal-detail">92 / 100 km</span>
+                </div>
+                <div class="goal-item" style="--goal-progress: 55%">
+                  <div class="goal-info">
+                    <svg width="16" height="16" fill="none">
+                      <use href="#icon-droplet" />
+                    </svg>
+                    <span class="goal-name">Drink 150 L water</span>
+                    <span class="goal-percent">55%</span>
+                  </div>
+                  <div class="goal-track">
+                    <div class="goal-fill info"></div>
+                  </div>
+                  <span class="goal-detail">82.5 / 150 L</span>
+                </div>
+                <div class="goal-item" style="--goal-progress: 65%">
+                  <div class="goal-info">
+                    <svg width="16" height="16" fill="none">
+                      <use href="#icon-squares" />
+                    </svg>
+                    <span class="goal-name">20 workout sessions</span>
+                    <span class="goal-percent">65%</span>
+                  </div>
+                  <div class="goal-track">
+                    <div class="goal-fill warning"></div>
+                  </div>
+                  <span class="goal-detail">13 / 20 sessions</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel-card achievements-card">
+              <div class="panel-header">
+                <div>
+                  <h3>Achievements</h3>
+                  <p>Milestones unlocked so far.</p>
+                </div>
+                <span class="card-badge pro">Pro</span>
+              </div>
+              <div class="achievements-grid">
+                <div class="achievement unlocked">
+                  <div class="achievement-icon gold">
+                    <svg width="20" height="20" fill="none">
+                      <use href="#icon-trophy" />
+                    </svg>
+                  </div>
+                  <span class="achievement-name">First 10K</span>
+                  <span class="achievement-desc">Run 10 km in one session</span>
+                </div>
+                <div class="achievement unlocked">
+                  <div class="achievement-icon purple">
+                    <svg width="20" height="20" fill="none">
+                      <use href="#icon-fire-streak" />
+                    </svg>
+                  </div>
+                  <span class="achievement-name">7-Day Streak</span>
+                  <span class="achievement-desc">Work out 7 days in a row</span>
+                </div>
+                <div class="achievement unlocked">
+                  <div class="achievement-icon green">
+                    <svg width="20" height="20" fill="none">
+                      <use href="#icon-target" />
+                    </svg>
+                  </div>
+                  <span class="achievement-name">Goal Crusher</span>
+                  <span class="achievement-desc">Complete 5 monthly goals</span>
+                </div>
+                <div class="achievement locked">
+                  <div class="achievement-icon locked">
+                    <svg width="20" height="20" fill="none">
+                      <use href="#icon-medal" />
+                    </svg>
+                  </div>
+                  <span class="achievement-name">Iron Will</span>
+                  <span class="achievement-desc"
+                    >30-day streak — 18 days left</span
+                  >
+                </div>
+                <div class="achievement locked">
+                  <div class="achievement-icon locked">
+                    <svg width="20" height="20" fill="none">
+                      <use href="#icon-trophy" />
+                    </svg>
+                  </div>
+                  <span class="achievement-name">Marathon</span>
+                  <span class="achievement-desc"
+                    >Run 42 km total — 8 km left</span
+                  >
+                </div>
+                <div class="achievement locked">
+                  <div class="achievement-icon locked">
+                    <svg width="20" height="20" fill="none">
+                      <use href="#icon-flame" />
+                    </svg>
+                  </div>
+                  <span class="achievement-name">Calorie King</span>
+                  <span class="achievement-desc">Burn 100K kcal total</span>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- ---- Health Insights (Heart Rate + Sleep + Nutrition) ---- -->
+          <section class="health-insights-grid" aria-label="Health insights">
+            <!-- Heart Rate -->
+            <article class="panel-card heart-rate-card">
+              <div class="panel-header">
+                <div>
+                  <h3>Heart rate</h3>
+                  <p>Average &amp; peak BPM this week.</p>
+                </div>
+                <span class="card-badge alert">Live</span>
+              </div>
+              <div class="insight-stats">
+                <div class="insight-stat">
+                  <span class="insight-stat-value" data-live="hr-avg">72</span>
+                  <span class="insight-stat-label">Avg BPM</span>
+                </div>
+                <div class="insight-stat">
+                  <span class="insight-stat-value" data-live="hr-peak"
+                    >156</span
+                  >
+                  <span class="insight-stat-label">Peak BPM</span>
+                </div>
+                <div class="insight-stat">
+                  <span class="insight-stat-value" data-live="hr-rest">58</span>
+                  <span class="insight-stat-label">Resting</span>
+                </div>
+              </div>
+              <div class="chart-canvas chart-canvas--sm">
+                <canvas
+                  id="heartRateChart"
+                  role="img"
+                  aria-label="Line chart showing heart rate over the week"
+                ></canvas>
+              </div>
+            </article>
+
+            <!-- Weekly Sleep -->
+            <article class="panel-card sleep-card">
+              <div class="panel-header">
+                <div>
+                  <h3>Weekly sleep</h3>
+                  <p>Hours of sleep per night.</p>
+                </div>
+                <span class="card-badge new">New</span>
+              </div>
+              <div class="insight-stats">
+                <div class="insight-stat">
+                  <span class="insight-stat-value" data-live="sleep-avg"
+                    >7.2</span
+                  >
+                  <span class="insight-stat-label">Avg hours</span>
+                </div>
+                <div class="insight-stat">
+                  <span class="insight-stat-value" data-live="sleep-best"
+                    >8.5</span
+                  >
+                  <span class="insight-stat-label">Best night</span>
+                </div>
+                <div class="insight-stat">
+                  <span class="insight-stat-value sleep-quality">Good</span>
+                  <span class="insight-stat-label">Quality</span>
+                </div>
+              </div>
+              <div class="chart-canvas chart-canvas--sm">
+                <canvas
+                  id="sleepChart"
+                  role="img"
+                  aria-label="Bar chart showing sleep hours for the week"
+                ></canvas>
+              </div>
+            </article>
+
+            <!-- Nutrition Macros -->
+            <article class="panel-card nutrition-card">
+              <div class="panel-header">
+                <div>
+                  <h3>Nutrition</h3>
+                  <p>Today&rsquo;s macronutrient breakdown.</p>
+                </div>
+                <span class="card-badge pro">Pro</span>
+              </div>
+              <div class="nutrition-stats">
+                <div class="nutrition-stat">
+                  <span
+                    class="nutrition-dot"
+                    style="background: #1f6feb"
+                  ></span>
+                  <span class="nutrition-label">Protein</span>
+                  <span class="nutrition-value" data-live="macro-protein"
+                    >132 g</span
+                  >
+                </div>
+                <div class="nutrition-stat">
+                  <span
+                    class="nutrition-dot"
+                    style="background: #3fb950"
+                  ></span>
+                  <span class="nutrition-label">Carbs</span>
+                  <span class="nutrition-value" data-live="macro-carbs"
+                    >245 g</span
+                  >
+                </div>
+                <div class="nutrition-stat">
+                  <span
+                    class="nutrition-dot"
+                    style="background: #d29922"
+                  ></span>
+                  <span class="nutrition-label">Fat</span>
+                  <span class="nutrition-value" data-live="macro-fat"
+                    >68 g</span
+                  >
+                </div>
+              </div>
+              <div class="chart-canvas chart-canvas--sm">
+                <canvas
+                  id="nutritionChart"
+                  role="img"
+                  aria-label="Doughnut chart showing macronutrient breakdown"
+                ></canvas>
               </div>
             </article>
           </section>

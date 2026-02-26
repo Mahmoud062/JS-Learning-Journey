@@ -28,6 +28,7 @@
 @import url("components/_data-viz.css");
 @import url("components/_activity.css");
 @import url("components/_grid-apps.css");
+@import url("components/_new-sections.css");
 
 /* 6. Utilities */
 @import url("utilities/_accessibility.css");

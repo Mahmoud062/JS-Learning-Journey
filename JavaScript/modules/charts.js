@@ -32,6 +32,10 @@ const charts = {
   calories: null,
   tracking: null,
   water: null,
+  steps: null,
+  heartRate: null,
+  sleep: null,
+  nutrition: null,
 };
 
 /* ---- Helpers ---- */
@@ -60,6 +64,10 @@ export const initCharts = () => {
   const caloriesCanvas = document.getElementById("caloriesChart");
   const trackingCanvas = document.getElementById("trackingChart");
   const waterCanvas = document.getElementById("waterChart");
+  const stepsCanvas = document.getElementById("stepsChart");
+  const heartRateCanvas = document.getElementById("heartRateChart");
+  const sleepCanvas = document.getElementById("sleepChart");
+  const nutritionCanvas = document.getElementById("nutritionChart");
 
   if (caloriesCanvas) {
     charts.calories = new Chart(caloriesCanvas, {
@@ -153,6 +161,145 @@ export const initCharts = () => {
       },
     });
   }
+
+  if (stepsCanvas) {
+    charts.steps = new Chart(stepsCanvas, {
+      type: "bar",
+      data: {
+        labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        datasets: [
+          {
+            label: "Steps",
+            data: [7200, 8420, 6100, 9300, 10240, 7800, 8600],
+            backgroundColor: "rgba(31, 111, 235, 0.85)",
+            borderRadius: 6,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: tooltipStyles,
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: axisTicks },
+          y: { grid: { display: false }, ticks: { color: "#8b949e" } },
+        },
+      },
+    });
+  }
+
+  /* ---- Heart Rate (line) ---- */
+  if (heartRateCanvas) {
+    charts.heartRate = new Chart(heartRateCanvas, {
+      type: "line",
+      data: {
+        labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        datasets: [
+          {
+            label: "Avg BPM",
+            data: [68, 72, 70, 75, 74, 71, 69],
+            borderColor: "#f85149",
+            backgroundColor: "rgba(248, 81, 73, 0.15)",
+            tension: 0.35,
+            fill: true,
+            pointRadius: 3,
+            pointBackgroundColor: "#f85149",
+          },
+          {
+            label: "Peak BPM",
+            data: [142, 156, 138, 162, 150, 148, 135],
+            borderColor: "#d29922",
+            backgroundColor: "transparent",
+            tension: 0.35,
+            borderDash: [5, 4],
+            pointRadius: 2,
+            pointBackgroundColor: "#d29922",
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: "bottom",
+            labels: { color: "#8b949e", boxWidth: 10 },
+          },
+          tooltip: tooltipStyles,
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: axisTicks },
+          y: { grid: axisGrid, ticks: axisTicks, min: 40 },
+        },
+      },
+    });
+  }
+
+  /* ---- Weekly Sleep (bar) ---- */
+  if (sleepCanvas) {
+    charts.sleep = new Chart(sleepCanvas, {
+      type: "bar",
+      data: {
+        labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        datasets: [
+          {
+            label: "Sleep (hrs)",
+            data: [7.5, 6.8, 8.1, 7.0, 6.5, 7.2, 8.5],
+            backgroundColor: "rgba(88, 86, 214, 0.75)",
+            borderRadius: 6,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: tooltipStyles,
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: axisTicks },
+          y: {
+            grid: axisGrid,
+            ticks: axisTicks,
+            min: 4,
+            max: 10,
+          },
+        },
+      },
+    });
+  }
+
+  /* ---- Nutrition Macros (doughnut) ---- */
+  if (nutritionCanvas) {
+    charts.nutrition = new Chart(nutritionCanvas, {
+      type: "doughnut",
+      data: {
+        labels: ["Protein", "Carbs", "Fat"],
+        datasets: [
+          {
+            data: [30, 50, 20],
+            backgroundColor: ["#1f6feb", "#3fb950", "#d29922"],
+            borderWidth: 0,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: tooltipStyles,
+        },
+        cutout: "60%",
+      },
+    });
+  }
 };
 
 /**
@@ -185,5 +332,42 @@ export const updateCharts = () => {
     normalised[0] += 100 - normalised.reduce((s, v) => s + v, 0);
     charts.water.data.datasets[0].data = normalised;
     charts.water.update("none");
+  }
+
+  if (charts.steps) {
+    const ds = charts.steps.data.datasets[0];
+    ds.data = ds.data.map((v) =>
+      clamp(v + Math.round(Math.random() * 1200 - 600), 2000, 15000),
+    );
+    charts.steps.update("none");
+  }
+
+  if (charts.heartRate) {
+    const avg = charts.heartRate.data.datasets[0];
+    const peak = charts.heartRate.data.datasets[1];
+    avg.data = avg.data.map((v) => clamp(v + Math.round(Math.random() * 8 - 4), 55, 90));
+    peak.data = peak.data.map((v) => clamp(v + Math.round(Math.random() * 14 - 7), 120, 180));
+    charts.heartRate.update("none");
+  }
+
+  if (charts.sleep) {
+    const ds = charts.sleep.data.datasets[0];
+    ds.data = ds.data.map((v) =>
+      clamp(+(v + (Math.random() * 1.2 - 0.6)).toFixed(1), 4.5, 9.5),
+    );
+    charts.sleep.update("none");
+  }
+
+  if (charts.nutrition) {
+    const slices = [
+      Math.random() * 15 + 22,
+      Math.random() * 15 + 40,
+      Math.random() * 10 + 15,
+    ];
+    const total = slices.reduce((s, v) => s + v, 0);
+    const normalised = slices.map((v) => Math.round((v / total) * 100));
+    normalised[0] += 100 - normalised.reduce((s, v) => s + v, 0);
+    charts.nutrition.data.datasets[0].data = normalised;
+    charts.nutrition.update("none");
   }
 };

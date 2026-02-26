@@ -120,3 +120,33 @@
   gap: var(--spacing-lg);
   margin-bottom: var(--spacing-2xl);
 }
+
+.health-insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: auto;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-2xl);
+}
+
+.health-insights-grid .panel-card {
+  max-height: 380px;
+  overflow: hidden;
+}
+
+/* New section grids */
+.streak-schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+}

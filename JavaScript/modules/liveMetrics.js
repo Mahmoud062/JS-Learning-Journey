@@ -54,6 +54,22 @@ const liveMetricConfig = {
   weight: { min: 80.8, max: 84.8, step: 0.2, decimals: 1, suffix: " kg" },
   bpm: { min: 52, max: 68, step: 2, decimals: 0, suffix: " bpm" },
   bmi: { min: 22.6, max: 24.6, step: 0.1, decimals: 1, suffix: "" },
+  /* Streak section */
+  streak: { min: 8, max: 18, step: 1, decimals: 0, suffix: "" },
+  "streak-best": { min: 20, max: 35, step: 1, decimals: 0, suffix: "" },
+  "streak-month": { min: 18, max: 26, step: 1, decimals: 0, suffix: "" },
+  /* Leaderboard calories */
+  "lb-cal-1": { min: 4200, max: 5500, step: 60, decimals: 0, suffix: "" },
+  "lb-cal-2": { min: 3800, max: 4800, step: 55, decimals: 0, suffix: "" },
+  "lb-cal-3": { min: 3200, max: 4200, step: 50, decimals: 0, suffix: "" },
+  "lb-cal-4": { min: 2800, max: 3800, step: 45, decimals: 0, suffix: "" },
+  "lb-cal-5": { min: 2400, max: 3400, step: 40, decimals: 0, suffix: "" },
+  /* Leaderboard scores */
+  "lb-score-1": { min: 90, max: 99, step: 1, decimals: 0, suffix: "" },
+  "lb-score-2": { min: 82, max: 94, step: 1, decimals: 0, suffix: "" },
+  "lb-score-3": { min: 75, max: 88, step: 1, decimals: 0, suffix: "" },
+  "lb-score-4": { min: 68, max: 82, step: 1, decimals: 0, suffix: "" },
+  "lb-score-5": { min: 60, max: 75, step: 1, decimals: 0, suffix: "" },
 };
 
 const progressGoals = {

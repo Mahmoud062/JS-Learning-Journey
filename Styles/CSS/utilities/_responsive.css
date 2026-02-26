@@ -26,6 +26,22 @@
   .insights-grid {
     grid-template-columns: 1fr;
   }
+
+  .streak-schedule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .goals-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .health-insights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 900px) {
@@ -96,6 +112,15 @@
 
   .mood-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .leaderboard-table thead th:nth-child(3),
+  .leaderboard-table tbody td:nth-child(3) {
+    display: none;
   }
 }
 
