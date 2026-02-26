@@ -345,8 +345,12 @@ export const updateCharts = () => {
   if (charts.heartRate) {
     const avg = charts.heartRate.data.datasets[0];
     const peak = charts.heartRate.data.datasets[1];
-    avg.data = avg.data.map((v) => clamp(v + Math.round(Math.random() * 8 - 4), 55, 90));
-    peak.data = peak.data.map((v) => clamp(v + Math.round(Math.random() * 14 - 7), 120, 180));
+    avg.data = avg.data.map((v) =>
+      clamp(v + Math.round(Math.random() * 8 - 4), 55, 90),
+    );
+    peak.data = peak.data.map((v) =>
+      clamp(v + Math.round(Math.random() * 14 - 7), 120, 180),
+    );
     charts.heartRate.update("none");
   }
 
@@ -371,3 +375,5 @@ export const updateCharts = () => {
     charts.nutrition.update("none");
   }
 };
+
+initCharts();
