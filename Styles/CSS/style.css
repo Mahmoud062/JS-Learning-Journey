@@ -8,28 +8,28 @@
  */
 
 /* 1. Design tokens */
-@import url("base/_variables.css");
+@import url("./base/_variables.css");
 
 /* 2. Theme overrides (light mode) */
-@import url("base/_themes.css");
+@import url("./base/_themes.css");
 
 /* 3. Reset & base */
-@import url("base/_reset.css");
+@import url("./base/_reset.css");
 
 /* 4. Layout shell */
-@import url("layout/_grid.css");
-@import url("layout/_header.css");
-@import url("layout/_sidebar.css");
+@import url("./layout/_grid.css");
+@import url("./layout/_header.css");
+@import url("./layout/_sidebar.css");
 
 /* 5. Components */
-@import url("components/_dropdowns.css");
-@import url("components/_buttons.css");
-@import url("components/_cards.css");
-@import url("components/_data-viz.css");
-@import url("components/_activity.css");
-@import url("components/_grid-apps.css");
-@import url("components/_new-sections.css");
+@import url("./components/_dropdowns.css");
+@import url("./components/_buttons.css");
+@import url("./components/_cards.css");
+@import url("./components/_data-viz.css");
+@import url("./components/_activity.css");
+@import url("./components/_grid-apps.css");
+@import url("./components/_new-sections.css");
 
 /* 6. Utilities */
-@import url("utilities/_accessibility.css");
-@import url("utilities/_responsive.css");
+@import url("./utilities/_accessibility.css");
+@import url("./utilities/_responsive.css");
